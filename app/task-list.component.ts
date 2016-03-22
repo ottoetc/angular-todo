@@ -41,9 +41,9 @@ export class TaskListComponent {
     this.selectedTask = clickedTask;
     this.onTaskSelect.emit(clickedTask);
   }
-  createTask(description: string): void{
+  createTask(task: Object): void{
     this.taskList.push(
-      new Task(description, this.taskList.length)
+      new Task(task.description, task.priority, this.taskList.length)
     );
   }
   onChange(filterOption) {
