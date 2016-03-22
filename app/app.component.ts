@@ -4,16 +4,26 @@ import { Component } from 'angular2/core';
   selector: 'my-app',
   template: `
     <div class="container">
-      <h1>Skeleton Angular2 App!</h1>
-      <h3>{{ task.description }}</h3>
+      <h1>To-Do List</h1>
+      <h3 *ngFor="#task of tasks" (click)="taskWasSelected(task)">
+        {{ task.description }}
+      </h3>
     </div>
   `
 })
 
 export class AppComponent {
-  public task: Task;
+  public tasks: Task[];
   constructor(){
-    this.task = new Task("Create a To-Do List app.", 0);
+    this.tasks = [
+      new Task("Create a To-Do List app.", 0),
+      new Task("Learn Kung Fu.", 1),
+      new Task("Rewatch all the Lord of the Rings movies.", 2),
+      new Task("Do the laundry.", 3)
+    ];
+  }
+  taskWasSelected(clickedTask: Task): void {
+    console.log(clickedTask);
   }
 }
 
