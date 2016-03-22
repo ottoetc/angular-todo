@@ -14,13 +14,15 @@ import {Task} from './task.model';
   `
 })
 export class NewTaskComponent {
-  public onSubmitNewTask: EventEmitter<Object>;
+  public onSubmitNewTask: EventEmitter<any>;
 
   constructor(){
     this.onSubmitNewTask = new EventEmitter();
   }
+
   addTask(userDescription: HTMLInputElement, userPriorityLevel: HTMLInputElement){
-    this.onSubmitNewTask.emit({description: userDescription.value, priority: userPriorityLevel.value});
+    var task = [userDescription.value, userPriorityLevel.value];
+    this.onSubmitNewTask.emit(task);
     userDescription.value = "";
     userPriorityLevel.value = "";
   }
